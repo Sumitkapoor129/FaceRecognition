@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+         <header style="background: linear-gradient(to right, #2c3e50, #3498db); color: white; padding: 20px 0; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+          
+          <!-- NAV BAR -->
+            {%include "navBar.html"%}
+
+
+<!-- heading -->
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                <h1 style="font-size: 2.5em; margin: 0; text-transform: uppercase; letter-spacing: 2px;">
+                    <span style="display: block; font-size: 0.4em; color: #87CEEB; margin-bottom: 10px; text-transform: none;">Welcome to</span>
+                    Smart Attendance Management System
+                    <span style="display: block; font-size: 0.5em; color: #87CEEB; margin-top: 10px; font-weight: normal;">Powered by Face Recognition</span>
+                </h1>
+            </div>
+        </header>
+
+        <!-- Content -->
+    <main>
+        <section class="dashboard">
+            <h2>Dashboard</h2>
+            <div class="stats">
+                <div class="stat">
+                    <h3>Total Students</h3>
+                    <p>{{student_count}}</p>
+                </div>
+                <div class="stat">
+                    <h3>Today's Attendance</h3>
+                    <p>{{attendence_per | floatformat}}%</p>
+                </div>
+                <div class="stat">
+                    <h3>Absent Students</h3>
+                    <p>{{absent}}</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            
+        </section>
+
+        <section class="actions">
+            <h2>Actions</h2>
+            <button onclick="window.location.href='LoginStudent/'">Mark Attendance</button>
+            <button onclick="window.location.href='Reports/'">Generate Reports</button>
+            <button onclick="window.location.href='ManageStudents/';">Manage Students</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sumit Kapoor
+        {% if request.user.is_authenticated %}
+        <button style="background-color: #7c73f2; color: white; border: none; padding: 10px 20px; margin-right: 10px; cursor: pointer;" onclick="window.location.href='LogOut/';" >Logout</button>{%endif%}</p>
+    </footer>
+</body>
+</html>

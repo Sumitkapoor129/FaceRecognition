@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav style="margin-bottom: 20px;">
+        <a href="{%url 'Attendance:home'%}" 
+           style="color: white; text-decoration: none; margin: 0 15px; font-size: 16px; padding: 5px 10px; transition: all 0.3s ease;"
+           onmouseover="this.style.backgroundColor='#4CAF50'; this.style.borderRadius='5px'; this.style.color='#fff'"
+           onmouseout="this.style.backgroundColor='transparent'; this.style.borderRadius='0'; this.style.color='white'">
+            Home
+        </a>
+        <a href="{%url 'Attendance:Report'%}" 
+           style="color: white; text-decoration: none; margin: 0 15px; font-size: 16px; padding: 5px 10px; transition: all 0.3s ease;"
+           onmouseover="this.style.backgroundColor='#4CAF50'; this.style.borderRadius='5px'; this.style.color='#fff'"
+           onmouseout="this.style.backgroundColor='transparent'; this.style.borderRadius='0'; this.style.color='white'">
+            Reports
+        </a>
+        <a href="#" 
+           style="color: white; text-decoration: none; margin: 0 15px; font-size: 16px; padding: 5px 10px; transition: all 0.3s ease;"
+           onmouseover="this.style.backgroundColor='#4CAF50'; this.style.borderRadius='5px'; this.style.color='#fff'"
+           onmouseout="this.style.backgroundColor='transparent'; this.style.borderRadius='0'; this.style.color='white'">
+            Academic
+        </a>
+        <a href="#" 
+           style="color: white; text-decoration: none; margin: 0 15px; font-size: 16px; padding: 5px 10px; transition: all 0.3s ease;"
+           onmouseover="this.style.backgroundColor='#4CAF50'; this.style.borderRadius='5px'; this.style.color='#fff'"
+           onmouseout="this.style.backgroundColor='transparent'; this.style.borderRadius='0'; this.style.color='white'">
+            About
+        </a>
+    </nav>
+
+    <script>
+        window.addEventListener('load', function() {
+          // Push the current URL to the history twice
+          window.history.pushState({}, document.title, window.location.href);
+          window.history.pushState({}, document.title, window.location.href);
+  
+          // Listen for the popstate event, which is triggered on "Back" navigation
+          window.addEventListener('popstate', function() {
+            // Redirect to the Django home page URL
+            window.location.href = "{% url 'Attendance:home' %}"; // Replace 'home' with your home view's name
+          });
+        });
+      </script>
+</body>
+</html>

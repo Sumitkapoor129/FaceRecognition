@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Students - Face Recognition Attendance System</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f5f5f5;">
+    <!-- Header -->
+    <header style="background: linear-gradient(to right, #2c3e50, #3498db); color: white; padding: 20px 0; text-align: center;">
+        {%include "navBar.html"%}
+        <h1 style="font-size: 2.5em; margin: 0; text-transform: uppercase; letter-spacing: 2px;">Manage Students</h1>
+    </header>
+    <!-- Main Content -->
+    <div style="max-width: 1200px; margin: 20px auto; padding: 0 20px;">
+        <!-- Action Buttons -->
+        <div style="margin-bottom: 20px;">
+            
+            <button style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; margin-right: 10px; cursor: pointer;">Export Data</button>
+            <input type="text" placeholder="Search students..." style="float: right; padding: 10px; width: 200px;">
+        </div>
+
+        <!-- Add Student Form -->
+        <div style="background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="margin-top: 0;">Add New Student</h2>
+            <form method="post">
+            {% csrf_token %}
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                
+                <input type="text" placeholder="Full Name" style="padding: 8px;" name="name">
+                <input type="text" placeholder="Roll Number" style="padding: 8px;" name="user_id">
+                <input type="password" placeholder="Password" style="padding: 8px;"name="password">
+                <input type="text" placeholder="Contact Number" style="padding: 8px;" name="phone_number">
+                <input type="email" placeholder="Email" style="padding: 8px;" name="email">
+            </div>
+            <div style="margin-top: 15px;">
+                <input type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; margin-right: 10px; cursor: pointer;" value="Take Image">
+                <input type="reset"  style="background-color: #ccc; border: none; padding: 10px 20px; cursor: pointer;" value="Cancel">
+                <br> {%if message %}
+                <ul><li style="color: red;">{{message}}</li></ul>
+                {%endif%}
+    
+            </div>
+        
+        </div></form>
+
+        <!-- Students Table -->
+        <div style="background-color: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background-color: #f5f5f5;">
+                        <th style="text-align: left; padding: 12px; border-bottom: 2px solid #ddd;">Roll No</th>
+                        <th style="text-align: left; padding: 12px; border-bottom: 2px solid #ddd;">Name</th>
+                        <th style="text-align: left; padding: 12px; border-bottom: 2px solid #ddd;">Class</th>
+                        <th style="text-align: left; padding: 12px; border-bottom: 2px solid #ddd;">Section</th>
+                        <th style="text-align: left; padding: 12px; border-bottom: 2px solid #ddd;">Contact</th>
+                        <th style="text-align: left; padding: 12px; border-bottom: 2px solid #ddd;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;">001</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;">John Doe</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;">10</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;">A</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;">1234567890</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;">
+                            <button style="background-color: #2196F3; color: white; border: none; padding: 5px 10px; margin-right: 5px; cursor: pointer;">Edit</button>
+                            <button style="background-color: #f44336; color: white; border: none; padding: 5px 10px; cursor: pointer;">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
