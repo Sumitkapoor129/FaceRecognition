@@ -140,7 +140,10 @@ def loginStudent(request):
     if request.method=="POST":
         user_id=request.POST.get('username')
         password=request.POST.get('password')   
-        student=Students.objects.get(user_id=user_id)
+        try:
+            student = Students.objects.get(user_id=user_id)
+        except Students.DoesNotExist:
+            student = None
         if student is not None:
             if student.password==password:
                 request.session['user_id'] = user_id
